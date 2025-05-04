@@ -1,0 +1,37 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
+const authRoutes = require('./routes/authRoutes');
+
+
+const Agenda = require('agenda');
+const flowRoutes = require('./routes/flowRoutes');
+const defineEmailJob = require('./jobs/emailJob');
+
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use('/api', authRoutes);
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));
+
+// Setup Agenda
+const agenda = new Agenda({ db: { address: process.env.MONGO_URI } });
+defineEmailJob(agenda);
+
+agenda.start(); // Start Agenda
+
+// Routes
+app.use('/api', flowRoutes(agenda));
+
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
