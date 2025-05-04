@@ -106,3 +106,15 @@ Edit
 {
   "message": "✅ Flow scheduled successfully!"
 }
+
+**### Folder Structure**
+email-marketing-sequence-builder/
+├── client/             # React + ReactFlow frontend
+│   ├── src/
+│   └── .env
+├── server/             # Express.js backend with Agenda + Nodemailer
+│   ├── jobs/
+│   └── .env.example
+├── postman/            # Postman API collection
+├── README.md
+└── .gitignore
