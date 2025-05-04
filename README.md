@@ -107,7 +107,7 @@ Edit
   "message": "✅ Flow scheduled successfully!"
 }
 
-**### Folder Structure**
+### Folder Structure
 email-marketing-sequence-builder/
 ├── client/             # React + ReactFlow frontend
 │   ├── src/
