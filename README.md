@@ -15,80 +15,74 @@ A full-stack MERN application that allows users to visually build and schedule a
 
 ## 🚀 Tech Stack
 
-- **Frontend**: React, ReactFlow
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB Atlas
-- **Scheduler**: Agenda.js
-- **Mailer**: Nodemailer
-- **Authentication**: JWT
+- **Frontend**: React, ReactFlow  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB Atlas  
+- **Scheduler**: Agenda.js  
+- **Mailer**: Nodemailer  
+- **Authentication**: JWT  
 - **Deployment**: Vercel (Frontend), Render (Backend)
 
 ---
 
 ## ✅ Features
 
-- 🔐 Secure user authentication with JWT
-- 🧩 Visual flow editor using ReactFlow
-- 📨 Schedule and automate email sequences
-- ⏳ Add delay nodes (in minutes) between emails
-- 📤 Emails sent using Nodemailer & Gmail
-- 🧪 API tested using Postman
-- 🧪 Unit tests using Jest for backend
+- 🔐 Secure user authentication with JWT  
+- 🧩 Visual flow editor using ReactFlow  
+- 📨 Schedule and automate email sequences  
+- ⏳ Add delay nodes (in minutes) between emails  
+- 📤 Emails sent using Nodemailer & Gmail  
+- 🧪 API tested using Postman  
+- ⚙️ Unit tests using Jest for backend
 
 ---
 
 ## 📹 Demo Video
 
 📺 [Watch the Demo](#)  
-*(Insert your Google Drive or YouTube link)*
+*(Insert your Google Drive or YouTube link here)*
 
 ---
 
 ## 🔐 Authentication Flow
 
-- Signup/Login via `/api/signup` or `/api/login`
-- JWT token is stored in `localStorage`
-- Token sent as `Authorization: Bearer <token>` in all secured requests
-
----
-
-## 📬 Postman API Collection
-
-🧪 You can test the API endpoints using Postman.
+- Signup/Login via `/api/signup` or `/api/login`  
+- JWT token is stored in `localStorage`  
+- Token is sent as `Authorization: Bearer <token>` in secured routes
 
 ---
 
 ## 📬 Postman API Example
 
-### Endpoint:
+### Endpoint
+```http
 POST https://email-marketing-sequence-builder-backend.onrender.com/api/save-flow
-### Headers and Body:
+```
+
+### Headers
 ```http
 Content-Type: application/json  
 Authorization: Bearer <your-token>
+```
+
+### Body
+```json
 {
   "nodes": [
     {
       "id": "1",
       "type": "leadSource",
-      "data": {
-        "leadEmail": "test@example.com"
-      }
+      "data": { "leadEmail": "test@example.com" }
     },
     {
       "id": "2",
       "type": "coldEmail",
-      "data": {
-        "subject": "Welcome!",
-        "body": "Thanks for signing up!"
-      }
+      "data": { "subject": "Welcome!", "body": "Thanks for signing up!" }
     },
     {
       "id": "3",
       "type": "delay",
-      "data": {
-        "delay": "2"
-      }
+      "data": { "delay": "2" }
     }
   ],
   "edges": [
@@ -96,26 +90,49 @@ Authorization: Bearer <your-token>
     { "source": "2", "target": "3" }
   ]
 }
+```
 
+### Sample Response
+```json
 {
-  "message": "✅ Flow scheduled successfully!" //sample response
+  "message": "✅ Flow scheduled successfully!"
 }
- Postman collection included: /postman/EmailFlow.postman_collection.json
+```
 
+📁 Postman collection included in: `/postman/EmailFlow.postman_collection.json`
 
-ENVIRONMENT SETUPS
+---
+
+## ⚙️ Environment Setup
+
+### `server/.env.example`
+```env
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password
 MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/...
 JWT_SECRET=your_jwt_secret
-REACT_APP_API_URL=https://email-marketing-sequence-builder-backend.onrender.com
+```
 
-RUNNING BACKEND TEST
+### `client/.env`
+```env
+REACT_APP_API_URL=https://email-marketing-sequence-builder-backend.onrender.com
+```
+
+---
+
+## 🧪 Running Backend Tests
+
+```bash
 cd server
 npm install
 npm test
+```
 
-FOLDER STRUCTURE
+---
+
+## 📁 Folder Structure
+
+```
 email-marketing-sequence-builder/
 ├── client/             # React + ReactFlow frontend
 │   ├── src/
@@ -126,37 +143,38 @@ email-marketing-sequence-builder/
 ├── postman/            # Postman API collection
 ├── README.md
 └── .gitignore
+```
 
-How It Works
-User signs up or logs in
+---
 
-Creates a visual flow using blocks (Lead → Email → Delay → Email)
+## 🧠 How It Works
 
-Flow is sent to backend using POST /api/save-flow
+1. User signs up or logs in  
+2. Creates a visual flow using blocks (Lead → Email → Delay → Email)  
+3. Flow is sent to backend using `POST /api/save-flow`  
+4. Backend parses and schedules jobs using Agenda  
+5. Emails are sent at the right time using Nodemailer  
 
-Agenda schedules jobs based on delay blocks
+---
 
-Nodemailer sends emails at correct times
+## ✅ Submission Checklist
 
- Submission Checklist
- Frontend with ReactFlow editor
+- [x] Frontend with ReactFlow editor  
+- [x] Cold Email, Delay, Lead Source nodes  
+- [x] JWT Auth (Login/Signup)  
+- [x] Flow saving and scheduling  
+- [x] Nodemailer + Agenda integration  
+- [x] `.env.example` file  
+- [x] Unit tests with Jest  
+- [x] Postman Collection  
+- [x] Deployed frontend + backend  
+- [x] Demo video link  
+- [x] Complete README  
 
- Cold Email, Delay, Lead Source nodes
+---
 
- JWT Auth (Login/Signup)
+## 👤 Author
 
- Flow saving and scheduling
-
- Nodemailer + Agenda integration
-
- .env.example file
-
- Unit tests with Jest
-
- Postman Collection
-
- Deployed frontend + backend
-
- Demo video link
-
- Complete README
+**Tanisha Pargal**  
+📧 tanishapargal2003@gmail.com  
+🔗 [GitHub](https://github.com/tanisha-pargal-15)
