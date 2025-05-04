@@ -206,7 +206,7 @@ function App() {
     };
 
     try {
-      const res = await fetch('http://localhost:5000/api/save-flow', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/save-flow`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
