@@ -7,16 +7,16 @@ const Auth = ({ setToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const route = isLogin ? 'login' : 'signup';
-    const res = await fetch(`http://localhost:5000/api/${route}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/${route}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
-  
+
     const data = await res.json();
-  
+
     if (isLogin) {
       if (data.token) {
         localStorage.setItem('token', data.token);
@@ -33,7 +33,6 @@ const Auth = ({ setToken }) => {
       }
     }
   };
-  
 
   return (
     <div style={{ padding: 20 }}>
