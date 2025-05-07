@@ -40,7 +40,7 @@ A full-stack MERN application that allows users to visually build and schedule a
 ## 📹 Demo Video
 
 📺 [Watch the Demo](#)  
-*(Insert your Google Drive or YouTube link here)*
+(https://drive.google.com/file/d/1bg7_Fz-VNYE00waCltyccQTiV-h_Dgfg/view?usp=sharing)
 
 ---
 
